@@ -21,7 +21,7 @@ def brackIt(filePath):
         print("Let's find that file path!") #assumes 2015 email date
         serverYear = "2015/"
         mainDivision = input("Enter the main division.(i.e. NDS): ")
-        print(os.path.isdir(serverPath + mainDivision))
+        print(os.path.isdir(serverPath + serverYear + mainDivision))
         if os.path.isdir(serverPath + serverYear + mainDivision) == True:
             print("Found the main division folder.")
         else:
@@ -43,32 +43,33 @@ def brackIt(filePath):
                 if os.path.isdir(serverPath + serverYear + mainDivision + "/" + folder) == True:
                     subFolders.append(folder)
             print(subFolders)
-            found = False
             for folder in subFolders:
+                print(folder[0:4])
                 if folder[0:4] == projectNumber:
                     filePath = serverYear + mainDivision + "/" + folder + "/Design/Production/"
                     print(filePath)
-                    found = True
-            while found == False:
+            if filePath.lower() == 'n':
                 print("Sorry I couldn't find that inner division folder.")
                 print("Your options are:")
                 print(subFolders)
                 subChoice = int(input("Which sub division folder do you want? (Type 1 for first)"))
-                subDivision = subFolders[subChoice]
-                break
+                subConvert = subChoice - 1 #adjust for zero based file location
+                subDivision = subFolders[subConvert]
+                print(subDivision)      
         if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
             folderDirect = serverPath + serverYear + mainDivision + '/' + subDivision
+            print(folderDirect)
             for folder in os.listdir(folderDirect):
                 if folder[0:4] == projectNumber:
-                    filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/"
+                    filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/" #file path doesn't work outside loop
                     print(filePath)
                     if finderWindow.lower() == 'y':
                         subprocess.call(["open", "-R", serverPath + filePath])
-        
     else:
         filePath = filePath.replace("\\", "/") #take care of windows weirdness
         
     fullFile = serverPath + filePath #add weird server path
+    print(fullFile)
     startFileName = filePath.find(projectNumber)
     endFileName = filePath.find("Design")
     fileName = filePath[startFileName:endFileName - 1] #cuts from project number to title
@@ -93,30 +94,35 @@ def brackIt(filePath):
         
     else:
         htmlFiles = []
-        for file in os.listdir(fullFile):
-            if file.endswith(".html"):
-                htmlFiles.append(file)
-        print("Here are all the files in that folder...")
-        print (htmlFiles)
-        correctFile = eval(input("Select the file you need to edit by entering 1 for first: "))
-        numConvert = correctFile - 1 #adjust for zero based files location
-        print("Copying, moving and opening {}".format(htmlFiles[numConvert]))
-        #should filename rely on file folders?
-        baseStart = htmlFiles[numConvert].rfind("_") 
-        baseTitle = htmlFiles[numConvert][:baseStart] #filename without Date
-        oldFilePath = serverPath + filePath + htmlFiles[numConvert]
-        if sigs.lower == 'y':
-            newFilePath = fullFile + baseTitle +"_FIN.html"
-            print("This is the new file you created:\n\n" + filePath + baseTitle + "_FIN.html")
-        else:
-            newFilePath = fullFile + baseTitle +"_{}{}.html".format(time.strftime("%m"), time.strftime("%d"))
-            print("This is the new file you created:\n\n" + filePath + baseTitle + "_{}{}.html".format(time.strftime("%m"), time.strftime("%d"))) #this is used for makeLive
-        shutil.copy(oldFilePath, newFilePath) #copy old file with new name
-        oldProd = filePath.replace("Production", "_oldProduction") #find old production folder path
-        shutil.move(oldFilePath, serverPath + oldProd + htmlFiles[numConvert]) #move old file to production
-        subprocess.check_call(["open", "-a", programPath, newFilePath])
-        if finderWindow.lower() == 'y' and filePath.lower() != 'n':
-            subprocess.call(["open", "-R", serverPath + filePath])
+        if os.path.isdir(fullFile) == True:
+            for file in os.listdir(fullFile):
+                if file.endswith(".html"):
+                    htmlFiles.append(file)
+            print("Here are all the files in that folder...")
+            print (htmlFiles)
+            correctFile = eval(input("Select the file you need to edit by entering 1 for first: "))
+            numConvert = correctFile - 1 #adjust for zero based file location
+            print("Copying, moving and opening {}".format(htmlFiles[numConvert]))
+            baseStart = htmlFiles[numConvert].rfind("_") 
+            baseTitle = htmlFiles[numConvert][:baseStart] #filename without Date
+            oldFilePath = serverPath + filePath + htmlFiles[numConvert]
+            if sigs.lower == 'y':
+                newFilePath = fullFile + baseTitle +"_FIN.html"
+                print("This is the new file you created:\n\n" + filePath + baseTitle + "_FIN.html")
+            else:
+                newFilePath = fullFile + baseTitle +"_{}{}.html".format(time.strftime("%m"), time.strftime("%d"))
+                print("This is the new file you created:\n\n" + filePath + baseTitle + "_{}{}.html".format(time.strftime("%m"), time.strftime("%d"))) #this is used for makeLive
+            try:
+                shutil.copy(oldFilePath, newFilePath) #copy old file with new name
+            except shutil.SameFileError:
+                version = input("That file has already been created. Do you want to make version 2? ")
+                if version.lower() == 'y':
+                    newFilePath = fullFile + baseTitle +"_{}{}v2.html".format(time.strftime("%m"), time.strftime("%d")) 
+            oldProd = filePath.replace("Production", "_oldProduction") #find old production folder path
+            shutil.move(oldFilePath, serverPath + oldProd + htmlFiles[numConvert]) #move old file to production
+            subprocess.check_call(["open", "-a", programPath, newFilePath])
+            if finderWindow.lower() == 'y' and filePath.lower() != 'n':
+                subprocess.call(["open", "-R", serverPath + filePath])
         print("\nThank you for using Lexie's findIt program. \n Any suggestions give Lexie a hollar!")
 #things to add....Add commonly used templates, add version 1 or 2 options, automatically get project number from path,
 brackIt(fileSite)
