@@ -14,7 +14,8 @@ fileSite = input("Enter the file path (start from year and go to the production 
 projectNumber = input("Enter the project number: ")
 newProject = input("Is this a new project? (Type y for yes): ")
 finderWindow = input("Want to open a new Finder window? (Type y for yes): ")
-sigs = input("Is it SIGS Time? (Type y for yes): ")
+if newProject.lower() != 'y':
+    sigs = input("Is it SIGS Time? (Type y for yes): ")
 def brackIt(filePath):
     serverPath = "/Volumes/marketing$/Creative Services/"
     if filePath.lower() == 'n':
@@ -31,9 +32,11 @@ def brackIt(filePath):
                     mainFolders.append(folder)
             print("Sorry I couldn't find that main division folder.")
             print("Your options are:")
-            print(mainFolders)
-            mainChoice = int(input("Which main division folder do you want? (Type 1 for first)"))
-            mainDivision = mainFolders[mainChoice]
+            for folder in mainFolders:
+                print("{:3}. {:4}".format(mainFolders.index(folder), folder))
+            mainChoice = int(input("Which main division folder do you want? (Type 1 for first) "))
+        mainDivision = mainFolders[mainChoice]
+        print(mainDivision)
         subDivision = input("Enter the sub division. (i.e. MBLE_EP): ")#need to search for correct project folder
         if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
             print("Found the folder.")
@@ -42,29 +45,28 @@ def brackIt(filePath):
             for folder in os.listdir(serverPath + serverYear + mainDivision):
                 if os.path.isdir(serverPath + serverYear + mainDivision + "/" + folder) == True:
                     subFolders.append(folder)
-            print(subFolders)
+            print("Sorry I couldn't find that inner division folder.")
+            print("Your options are:")
             for folder in subFolders:
-                print(folder[0:4])
                 if folder[0:4] == projectNumber:
                     filePath = serverYear + mainDivision + "/" + folder + "/Design/Production/"
-                    print(filePath)
+                    print("Just kidding I found it.")
+                    break
+                else:
+                    print("{:3}. {:4}".format(subFolders.index(folder), folder))
             if filePath.lower() == 'n':
-                print("Sorry I couldn't find that inner division folder.")
-                print("Your options are:")
-                print(subFolders)
-                subChoice = int(input("Which sub division folder do you want? (Type 1 for first)"))
-                subConvert = subChoice - 1 #adjust for zero based file location
-                subDivision = subFolders[subConvert]
+                subChoice = int(input("Type the number of the sub division folder you want. "))
+                subDivision = subFolders[subChoice]
                 print(subDivision)      
-        if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
-            folderDirect = serverPath + serverYear + mainDivision + '/' + subDivision
-            print(folderDirect)
-            for folder in os.listdir(folderDirect):
-                if folder[0:4] == projectNumber:
-                    filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/" #file path doesn't work outside loop
-                    print(filePath)
-                    if finderWindow.lower() == 'y':
-                        subprocess.call(["open", "-R", serverPath + filePath])
+                if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
+                    folderDirect = serverPath + serverYear + mainDivision + '/' + subDivision
+                    print(folderDirect)
+                    for folder in os.listdir(folderDirect):
+                        if folder[0:4] == projectNumber:
+                            filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/" #file path doesn't work outside loop
+                            print(filePath)
+                            if finderWindow.lower() == 'y':
+                                subprocess.call(["open", "-R", serverPath + filePath])
     else:
         filePath = filePath.replace("\\", "/") #take care of windows weirdness
         
@@ -76,7 +78,7 @@ def brackIt(filePath):
     programPath = users[user][2]
     
     def newOne():
-        templates = {"MMA": "Interactive/Templates/Emails/Templates/MMA_Template508.html", "GreenOperational": "Interactive/Templates/Emails/Templates/Nelnet/Green-Operational-Template.html", "GreenWelcome": "Interactive/Templates/Emails/Templates/Nelnet/Green-Welcome-Template.html", "BluePromotional": "Interactive/Templates/Emails/Templates/Nelnet/Blue-Promotional-Template.html", "QM-BluePromotional": "Interactive/Templates/Emails/Templates/Nelnet/QM_Blue-Promotional-Template.html", "QM-GreenOperational": "Interactive/Templates/Emails/Templates/Nelnet/QM_Green-Operational-Template.html", "QM-GreenWelcome": "Interactive/Templates/Emails/Templates/Nelnet/QM_Green-Welcome-Template.html", "MMATemplate": "Interactive/Templates/Emails/Templates/MMA_Template508.html"}
+        templates = {"MMA": "Interactive/Templates/Emails/Templates/MMA_Template508.html", "GreenOperational": "Interactive/Templates/Emails/Templates/Nelnet/Green-Operational-Template.html", "GreenWelcome": "Interactive/Templates/Emails/Templates/Nelnet/Green-Welcome-Template.html", "BluePromotional": "Interactive/Templates/Emails/Templates/Nelnet/Blue-Promotional-Template.html", "QM-BluePromotional": "Interactive/Templates/Emails/Templates/Nelnet/QM_Blue-Promotional-Template.html", "QM-GreenOperational": "Interactive/Templates/Emails/Templates/Nelnet/QM_Green-Operational-Template.html", "QM-GreenWelcome": "Interactive/Templates/Emails/Templates/Nelnet/QM_Green-Welcome-Template.html"}
         print("Your template options are: ")
         for key in templates.keys():
             print (key, sep=" | ")
@@ -106,7 +108,7 @@ def brackIt(filePath):
             baseStart = htmlFiles[numConvert].rfind("_") 
             baseTitle = htmlFiles[numConvert][:baseStart] #filename without Date
             oldFilePath = serverPath + filePath + htmlFiles[numConvert]
-            if sigs.lower == 'y':
+            if sigs.lower() == 'y':
                 newFilePath = fullFile + baseTitle +"_FIN.html"
                 print("This is the new file you created:\n\n" + filePath + baseTitle + "_FIN.html")
             else:
@@ -117,12 +119,14 @@ def brackIt(filePath):
             except shutil.SameFileError:
                 version = input("That file has already been created. Do you want to make version 2? ")
                 if version.lower() == 'y':
-                    newFilePath = fullFile + baseTitle +"_{}{}v2.html".format(time.strftime("%m"), time.strftime("%d")) 
+                    newFilePath = fullFile + baseTitle +"_{}{}v2.html".format(time.strftime("%m"), time.strftime("%d"))
+                    print("This is the actual new file you created:\n\n" + filePath + baseTitle +"_{}{}v2.html".format(time.strftime("%m"), time.strftime("%d")))
+                shutil.copy(oldFilePath, newFilePath)
             oldProd = filePath.replace("Production", "_oldProduction") #find old production folder path
             shutil.move(oldFilePath, serverPath + oldProd + htmlFiles[numConvert]) #move old file to production
             subprocess.check_call(["open", "-a", programPath, newFilePath])
             if finderWindow.lower() == 'y' and filePath.lower() != 'n':
                 subprocess.call(["open", "-R", serverPath + filePath])
         print("\nThank you for using Lexie's findIt program. \n Any suggestions give Lexie a hollar!")
-#things to add....Add commonly used templates, add version 1 or 2 options, automatically get project number from path,
+#things to add....Add commonly used templates, automatically get project number from path,
 brackIt(fileSite)
