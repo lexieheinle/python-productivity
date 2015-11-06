@@ -19,8 +19,8 @@ from reports import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.homePage, name='homePage'),
-]
-"""url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^counties/(?P<name_slug>)/$', views.CountyView.as_view(), name='county'),
+]
+""" url(r'^$', views.homePage, name='homePage'),,
 ]"""
