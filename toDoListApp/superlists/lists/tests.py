@@ -24,6 +24,6 @@ class HomePageTest(TestCase):
     self.assertIn('A new list item', response.content.decode())
     expected_html = render_to_string(
       'index.html',
-      {'new_item_text': 'A new list item'},
+      {'new_item_text': 'A new list item'}
     )
     self.assertEqual(response.content.decode(), expected_html)
