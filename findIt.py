@@ -35,7 +35,7 @@ def brackIt(filePath):
             for folder in mainFolders:
                 print("{:3}. {:4}".format(mainFolders.index(folder), folder))
             mainChoice = int(input("Which main division folder do you want? (Type 1 for first) "))
-        mainDivision = mainFolders[mainChoice]
+            mainDivision = mainFolders[mainChoice]
         print(mainDivision)
         subDivision = input("Enter the sub division. (i.e. MBLE_EP): ")#need to search for correct project folder
         if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
