@@ -10,6 +10,7 @@ class County(models.Model):
     return self.name
   def get_absolute_url(self):
     return "/counties/%s/" % self.name_slug
+    #return "reports/%s/" % self.name_slug
   
 class Lake(models.Model):
   name = models.CharField(max_length=255)

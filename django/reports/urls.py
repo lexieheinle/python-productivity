@@ -21,5 +21,5 @@ urlpatterns = [
     
 ]
 """ url(r'^$', views.homePage, name='homePage'),
-url(r'^counties/(?P<name_slug>)/$', views.CountyView.as_view(), name='county'), (?P<county_name_slug>)
+url(r'^counties/(?P<name_slug>[\w-]+)/$', views.CountyView.as_view(), name='county'), (?P<county_name_slug>)
 ]"""
