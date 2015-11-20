@@ -22,7 +22,6 @@ def brackIt(filePath):
         print("Let's find that file path!") #assumes 2015 email date
         serverYear = "2015/"
         mainDivision = input("Enter the main division.(i.e. NDS): ")
-        print(os.path.isdir(serverPath + serverYear + mainDivision))
         if os.path.isdir(serverPath + serverYear + mainDivision) == True:
             print("Found the main division folder.")
         else:
@@ -36,7 +35,6 @@ def brackIt(filePath):
                 print("{:3}. {:4}".format(mainFolders.index(folder), folder))
             mainChoice = int(input("Which main division folder do you want? (Type 1 for first) "))
             mainDivision = mainFolders[mainChoice]
-        print(mainDivision)
         subDivision = input("Enter the sub division. (i.e. MBLE_EP): ")#need to search for correct project folder
         if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
             print("Found the folder.")
