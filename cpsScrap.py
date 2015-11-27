@@ -9,13 +9,13 @@ soup = BeautifulSoup(page)
 tables = soup.findAll('table') #find all tables
 #print(tables)
 mainTable = soup.find(id="cps_eeann_year")
-print(mainTable)
+#print(mainTable)
 for table in tables:
   caption = table.find('caption')
   print(caption)
 data = [] #create holder for results
 rows = mainTable.findAll('tr')
-print(rows)
+#print(rows)
 for row in rows[1:]:
   dataRow = [] #create smaller list for each row
   for th in row.findAll('th'):
