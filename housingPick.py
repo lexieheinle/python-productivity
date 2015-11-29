@@ -1,25 +1,25 @@
 #!/usr/bin/python
 #requires python3 'cause it's the future!
-campusHousing = {
-  "Abel": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":1004},
-  "Burr": { "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 9,976.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":222},
-  "Fedde": { "type":"Traditional Dorm", "breakHousing":True, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":39},
-  "Harper": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Husker": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":1, "cost":" $ 6,511.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":41},
-  "Kauffman": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" N/A ", "mealPlan":True, "special":"Raikes Program", "upperClass":False, "occupants":"N/A"},
-  "Love ": { "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female", "upperClass":False, "occupants":45},
-  "Neihardt": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,457.00 ", "mealPlan":True, "special":"Honors Program", "upperClass":False, "occupants":462},
-  "Pound": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":228},
-  "Sandoz": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":401},
-  "Schramm": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Selleck": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,657.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":612},
-  "Smith": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Knoll Residentrial Center": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":565},
-  "University Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":512},
-  "Eastside Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":513},
-  "The Courtyards": { "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":478},
-  "The Village": { "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":526}
-}
+campusHousing = [
+  { "name":"Abel", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":1004},
+  { "name": "Burr", "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 9,976.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":222},
+  { "name":"Fedde", "type":"Traditional Dorm", "breakHousing":True, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":39},
+  { "name":"Harper", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+  { "name":"Husker", "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":1, "cost":" $ 6,511.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":41},
+  { "name":"Kauffman", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" N/A ", "mealPlan":True, "special":"Raikes Program", "upperClass":False, "occupants":"N/A"},
+  { "name":"Love ", "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female", "upperClass":False, "occupants":45},
+ { "name": "Neihardt", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,457.00 ", "mealPlan":True, "special":"Honors Program", "upperClass":False, "occupants":462},
+  { "name":"Pound", "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":228},
+  { "name":"Sandoz", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":401},
+  { "name":"Schramm", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+  { "name":"Selleck", "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,657.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":612},
+  { "name":"Smith", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+ { "name": "Knoll Residentrial Center", "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":565},
+  { "name":"University Suites", "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":512},
+  { "name":"Eastside Suites", "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":513},
+  { "name":"The Courtyards", "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":478},
+  { "name":"The Village", "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":526}
+]
 
 offcampusHousing = [
   { "name":"Latitude Apartments", "minRoom":0, "maxRoom":4, "minCost":649, "maxCost":1324, "cityMiles":0.2, "eastMiles":3.3, "campus":"city"},
@@ -44,20 +44,21 @@ offcampusHousing = [
 
 def onCampus():
   '''leads user through on campus specific questions'''
-  campusChoice = input("So you like the campus life. Which campus, East or City?")
+  campusChoice = input("So you like the campus life. Which campus, East or City? ")
   housePref = eval(input("What's your housing preference? Type 0 for traditional dorm (2 roommates), 1 for suite-style (4 roommates) or 2 for apartment-style (4 roommates). "))
   breakHousing = eval(input("Do you need break housing? Type 0 if not and 1 if you do. "))
   mealPlan = eval(input("Do you need a meal plan? Type 0 if not and 1 if you do. "))
   upperClassman = eval(input("Do you want housing that's more geared for upperclassmen? Type 0 if not and 1 if you do. "))
   specialOpp = eval(input("Are you interested in any special housing programs? Type 0 if not and 1 if you do. "))
+  onLength = len(campusHousing)
   if specialOpp == 1:
     count = 0
-    for key, val in campusHousing.items():
+    for i in range(onLength):
       #print("{} = {}".format(key, val))
-      if val["special"] != '':
-        print("{}. {}".format(count, val["special"]))
+      if campusHousing[i]["special"] != '':
+        print("{}. {}".format(count, campusHousing[i]["special"]))
         count += 1
-    oppChoice = input("If interested, select one of the options above by typing its number. If not enter a larger number. ")
+    oppChoice = eval(input("If interested, select one of the options above by typing its number. If not enter a larger number. "))
   print("-------------------------------")
   print("Calculating your options now.")
   if housePref == 0:
@@ -66,41 +67,48 @@ def onCampus():
     housePref = "Suite-Style"
   elif housePref == 2:
     housePref = "Apartment-Style"
-  if oppChoice == 0:
-    oppChoice = "Female"
-  elif oppChoice == 1:
-    oppChoice = "Raikes Program"
-  elif oppChoice == 2:
-    oppChoice = "Honors Program"
+  if specialOpp == 1:
+    if oppChoice == 0:
+      oppChoice = "Female"
+    elif oppChoice == 1:
+      oppChoice = "Raikes Program"
+    elif oppChoice == 2:
+      oppChoice = "Honors Program"
   else:
-    oppChoice = ""
+    oppChoice = ''
   userChoice = {"type": bool(housePref), "breakHousing": bool(breakHousing), "campus": campusChoice.lower(), "mealPlan": bool(mealPlan), "special": oppChoice, "upperClass": bool(upperClassman)}
-  #print(userChoice)
   matched = {}
-  for key, val in campusHousing.items():
+  for i in range(onLength):
     matches = 0
-    for smkey, smval in val.items():
-      for ukey, uval in userChoice.items():
-        #print("{} = {}".format(smkey, smval))
-        #print("{} = {}".format(ukey, uval))
-        if smkey == "campus" and smval != uval:
-          break
-        if smkey == ukey and smval == uval:
-          #print("{} = {}".format(smkey, smval))
-          #print("{} = {}".format(ukey, uval))
-          matches += 1
-    matched[key] = matches
-  #print(matched)
+    if campusHousing[i]["campus"] == userChoice['campus']:
+      matches += 1
+    if campusHousing[i]["special"] == userChoice['special'] and userChoice['special'] != '':
+      matches += 2
+    if campusHousing[i]["type"] == userChoice['type']:
+      matches += 1
+    if campusHousing[i]["breakHousing"] == userChoice['breakHousing']:
+      matches += 1
+    if campusHousing[i]["mealPlan"] == userChoice['mealPlan']:
+      matches += 1
+    if campusHousing[i]["upperClass"] == userChoice['upperClass']:
+      matches += 1
+    matched[campusHousing[i]['name']] = matches
   options = [key for key,val in matched.items() if val == max(matched.values())]
   print("Here are your options: ")
   for option in options:
-    print("{name} \n This {typed} housing option {breakOption} break housing is on {campus} campus with a minimum number of {minR} roomates and a maximum of {maxR} roommates. The standard occpancy cost is {cost}, and this housing option {mealPlan} with {specialOption}. This residence {upper} upperclassmen and has {num} occupants.".format(name = option, typed = campusHousing[option]["type"], breakOption="with" if campusHousing[option]["breakHousing"] == True else "without", campus = campusHousing[option]["campus"],minR = campusHousing[option]["minRoom"], maxR = campusHousing[option]["maxRoom"], cost = campusHousing[option]["cost"], mealPlan = "offers a meal plan" if campusHousing[option]["mealPlan"] == True else "offers no meal plan", specialOption = "no special housing options" if campusHousing[option]["special"] == "" else campusHousing[option]["special"], upper = "is geared toward" if campusHousing[option]["upperClass"] == True else "isn't geared toward", num = campusHousing[option]["occupants"]))
+    indexed ={}
+    num = 0
+    for i in range(onLength):
+      if campusHousing[i]['name'] == option:
+        num = i
+    indexed[option] = num
+    print("{name} \n This {typed} housing option {breakOption} break housing is on {campus} campus with a minimum number of {minR} roomate(s) and a maximum of {maxR} roommates. The standard occpancy cost is {cost}, and this housing option {mealPlan} with {specialOption}. This residence {upper} upperclassmen and has {num} occupants.".format(name = option, typed = campusHousing[indexed[option]]["type"], breakOption="with" if campusHousing[indexed[option]]["breakHousing"] == True else "without", campus = campusHousing[indexed[option]]["campus"],minR = campusHousing[indexed[option]]["minRoom"], maxR = campusHousing[indexed[option]]["maxRoom"], cost = campusHousing[indexed[option]]["cost"].strip(), mealPlan = "offers a meal plan" if campusHousing[indexed[option]]["mealPlan"] == True else "offers no meal plan", specialOption = "no special housing options" if campusHousing[indexed[option]]["special"] == "" else campusHousing[indexed[option]]["special"], upper = "is geared toward" if campusHousing[indexed[option]]["upperClass"] == True else "isn't geared toward", num = campusHousing[indexed[option]]["occupants"]))
     print("-------------------------------")  
         
       
 def offCampus():
   '''leads user through off campus questions'''
-  print("Hooray for the freedom and also the chance to save some money. These ranges are based on percentiles in our selection of apartments")
+  print("Hooray for the freedom and also the chance to save some money. These ranges are based on percentiles in our selection of apartments.")
   prices = ["$254 to $342", "$343 to $625", "$626 to $701", "$702 to $1324"]
   for i in range(len(prices)):
     print("{}. {} per month per bed".format(i, prices[i]))
@@ -110,13 +118,13 @@ def offCampus():
   print("-------------------------------")
   print("Calculating your options now.")
   if priceRange == 0:
-    pricePref = 342
+    pricePref = 254
   elif priceRange == 1:
-    pricePref = 625
+    pricePref = 343
   elif priceRange == 2:
-    pricePref = 701
+    pricePref = 626
   elif priceRange == 3:
-    pricePref = 1324
+    pricePref = 702
   userChoice = {'price': pricePref, "campus": campusChoice.lower(), 'roomMates': roomates}
   matched = {}
   offLength = len(offcampusHousing)
@@ -130,6 +138,7 @@ def offCampus():
       matches += 1
     if matches > 0:
       matched[offcampusHousing[i]['name']] = matches
+  print("Here are your options: ")
   options = [key for key,val in matched.items() if val == max(matched.values())]
   for option in options:
     indexed ={}
