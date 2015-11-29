@@ -1,25 +1,46 @@
 #!/usr/bin/python
 #requires python3 'cause it's the future!
 campusHousing = {
-  "Abel": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":1004},
-  "Burr": { "type":"Traditional Dorm", "breakHousing":False, "campus":"East", "minRoom":1, "maxRoom":2, "cost":" $ 9,976.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":222},
-  "Fedde": { "type":"Traditional Dorm", "breakHousing":True, "campus":"East", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":39},
-  "Harper": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Husker": { "type":"Traditional Dorm", "breakHousing":True, "campus":"City", "minRoom":1, "maxRoom":1, "cost":" $ 6,511.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":41},
-  "Kauffman": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" N/A ", "mealPlan":True, "special":"Raikes Program", "upperClass":False, "occupants":"N/A"},
-  "Love ": { "type":"Traditional Dorm", "breakHousing":False, "campus":"East", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female", "upperClass":False, "occupants":45},
-  "Neihardt": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,457.00 ", "mealPlan":True, "special":"Honors Program", "upperClass":False, "occupants":462},
-  "Pound": { "type":"Traditional Dorm", "breakHousing":True, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":228},
-  "Sandoz": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":401},
-  "Schramm": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Selleck": { "type":"Traditional Dorm", "breakHousing":True, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,657.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":612},
-  "Smith": { "type":"Traditional Dorm", "breakHousing":False, "campus":"City", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
-  "Knoll Residentrial Center": { "type":"Suite-Style", "breakHousing":True, "campus":"City", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":565},
-  "University Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"City", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":512},
-  "Eastside Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"City", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":513},
-  "The Courtyards": { "type":"Apartment-Style", "breakHousing":True, "campus":"City", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":478},
-  "The Village": { "type":"Apartment-Style", "breakHousing":True, "campus":"City", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":526}
+  "Abel": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":1004},
+  "Burr": { "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 9,976.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":222},
+  "Fedde": { "type":"Traditional Dorm", "breakHousing":True, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":39},
+  "Harper": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+  "Husker": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":1, "cost":" $ 6,511.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":41},
+  "Kauffman": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" N/A ", "mealPlan":True, "special":"Raikes Program", "upperClass":False, "occupants":"N/A"},
+  "Love ": { "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female", "upperClass":False, "occupants":45},
+  "Neihardt": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,457.00 ", "mealPlan":True, "special":"Honors Program", "upperClass":False, "occupants":462},
+  "Pound": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":228},
+  "Sandoz": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":401},
+  "Schramm": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+  "Selleck": { "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,657.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":612},
+  "Smith": { "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
+  "Knoll Residentrial Center": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":565},
+  "University Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":512},
+  "Eastside Suites": { "type":"Suite-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 11,204.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":513},
+  "The Courtyards": { "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":478},
+  "The Village": { "type":"Apartment-Style", "breakHousing":True, "campus":"city", "minRoom":2, "maxRoom":4, "cost":" $ 7,148.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":526}
 }
+
+offcampusHousing = [
+  { "name":"Latitude Apartments", "minRoom":0, "maxRoom":4, "minCost":649, "maxCost":1324, "cityMiles":0.2, "eastMiles":3.3, "campus":"city"},
+  { "name":'Canopy Lofts', "minRoom":0, "maxRoom":4, "minCost":625, "maxCost":900, "cityMiles":0.6, "eastMiles":3.8, "campus":"city"},
+  { "name":"Claremont Park Apartments", "minRoom":1, "maxRoom":3, "minCost":325, "maxCost":625, "cityMiles":0.8, "eastMiles":3.3, "campus":"city"},
+  { "name": "College Park Apartments", "minRoom":1, "maxRoom":3, "minCost":277, "maxCost":659, "cityMiles":5.1, "eastMiles":3.7, "campus":"east"},
+  { "name":"Superior Place Apartments", "minRoom":1, "maxRoom":2, "minCost":298, "maxCost":585, "cityMiles":2.5, "eastMiles":4.2, "campus":"city"},
+  { "name":"Park Ridge", "minRoom":1, "maxRoom":3, "minCost":285, "maxCost":640, "cityMiles":3.2, "eastMiles":5.1, "campus":"city"},
+  { "name":"Deer Park Apartments", "minRoom":1, "maxRoom":3, "minCost":323, "maxCost":699, "cityMiles":3, "eastMiles":4.8, "campus":"city"},
+  { "name":"Century House", "minRoom":0, "maxRoom":2, "minCost":540, "maxCost":860, "cityMiles":0.6, "eastMiles":3.4, "campus":"city"},
+  { "name":"35 East Apartments", "minRoom":0, "maxRoom":2, "minCost":625, "maxCost":995, "cityMiles":1.7, "eastMiles":0, "campus":"east"},
+  { "name":"The Willows Apartments", "minRoom":1, "maxRoom":2, "minCost":310, "maxCost":589, "cityMiles":1.6, "eastMiles":3.2, "campus":"city"},
+  { "name":"Folsom Ridge Apartments", "minRoom":1, "maxRoom":3, "minCost":308, "maxCost":695, "cityMiles":3, "eastMiles":5.6, "campus":"city"},
+  { "name":"Lakeview Park Apartments", "minRoom":0, "maxRoom":3, "minCost":349, "maxCost":705, "cityMiles":2.8, "eastMiles":5.3, "campus":"city"},
+  { "name":"Lakeside Village", "minRoom":1, "maxRoom":3, "minCost":370, "maxCost":810, "cityMiles":3.2, "eastMiles":5.8, "campus":"city"},
+  { "name":"The 50/50 Apartments", "minRoom":2, "maxRoom":4, "minCost":620, "maxCost":715, "cityMiles":0.4, "eastMiles":2.3, "campus":"city"},
+  {"name": "Mystic Pines Apartments", "minRoom":1, "maxRoom":3, "minCost":285, "maxCost":625, "cityMiles":4.3, "eastMiles":6.8, "campus":"city"},
+  { "name": "Thomasbrook Apartments", "minRoom":1, "maxRoom":2, "minCost":348, "maxCost":750, "cityMiles":4.5, "eastMiles":3.9, "campus":"east"},
+  { "name":"Willow Creek Apartments", "minRoom":1, "maxRoom":2, "minCost":365, "maxCost":650, "cityMiles":4.9, "eastMiles":3.4, "campus":"east"},
+  { 'name': "Northridge Heights", "minRoom":0, "maxRoom":3, "minCost":254, "maxCost":735, "cityMiles":4.1, "eastMiles":4.9, "campus":"city"}
+]
 
 def onCampus():
   '''leads user through on campus specific questions'''
@@ -36,7 +57,7 @@ def onCampus():
       if val["special"] != '':
         print("{}. {}".format(count, val["special"]))
         count += 1
-  oppChoice = input("If interested, select one of the options above by typeing its number. If not enter a larger number. ")
+    oppChoice = input("If interested, select one of the options above by typing its number. If not enter a larger number. ")
   print("-------------------------------")
   print("Calculating your options now.")
   if housePref == 0:
@@ -53,8 +74,8 @@ def onCampus():
     oppChoice = "Honors Program"
   else:
     oppChoice = ""
-  userChoice = {"type": bool(housePref), "breakHousing": bool(breakHousing), "campus": campusChoice, "mealPlan": bool(mealPlan), "special": oppChoice, "upperClass": bool(upperClassman)}
-  print(userChoice)
+  userChoice = {"type": bool(housePref), "breakHousing": bool(breakHousing), "campus": campusChoice.lower(), "mealPlan": bool(mealPlan), "special": oppChoice, "upperClass": bool(upperClassman)}
+  #print(userChoice)
   matched = {}
   for key, val in campusHousing.items():
     matches = 0
@@ -65,24 +86,62 @@ def onCampus():
         if smkey == "campus" and smval != uval:
           break
         if smkey == ukey and smval == uval:
-          print("{} = {}".format(smkey, smval))
-          print("{} = {}".format(ukey, uval))
+          #print("{} = {}".format(smkey, smval))
+          #print("{} = {}".format(ukey, uval))
           matches += 1
     matched[key] = matches
-  print(matched)
+  #print(matched)
   options = [key for key,val in matched.items() if val == max(matched.values())]
   print("Here are your options: ")
   for option in options:
     print("{name} \n This {typed} housing option {breakOption} break housing is on {campus} campus with a minimum number of {minR} roomates and a maximum of {maxR} roommates. The standard occpancy cost is {cost}, and this housing option {mealPlan} with {specialOption}. This residence {upper} upperclassmen and has {num} occupants.".format(name = option, typed = campusHousing[option]["type"], breakOption="with" if campusHousing[option]["breakHousing"] == True else "without", campus = campusHousing[option]["campus"],minR = campusHousing[option]["minRoom"], maxR = campusHousing[option]["maxRoom"], cost = campusHousing[option]["cost"], mealPlan = "offers a meal plan" if campusHousing[option]["mealPlan"] == True else "offers no meal plan", specialOption = "no special housing options" if campusHousing[option]["special"] == "" else campusHousing[option]["special"], upper = "is geared toward" if campusHousing[option]["upperClass"] == True else "isn't geared toward", num = campusHousing[option]["occupants"]))
     print("-------------------------------")  
         
+      
 def offCampus():
   '''leads user through off campus questions'''
-  print("Hooray for the freedom and also the chance to save some money. Choose your level of frugrity below by tying in the level's name.")
-  prices = {'Scrooge': "$100 to $200 per month", 'Cameron': '$201 to $300 per month', 'Pretty in Pink Star': '$301 to $400 per month'}
-  for character, price in prices.items():
-    print("{} pays {}.".format(character, price))
-  priceRange = input("Which fictional character do you relate most to? ")
+  print("Hooray for the freedom and also the chance to save some money. These ranges are based on percentiles in our selection of apartments")
+  prices = ["$254 to $342", "$343 to $625", "$626 to $701", "$702 to $1324"]
+  for i in range(len(prices)):
+    print("{}. {} per month per bed".format(i, prices[i]))
+  priceRange = eval(input("Select your price level by typing in that level's number. "))
+  campusChoice = input('Which campus would you rather be closer to? East or City? ')
+  roomates = eval(input('How many roomates? Type 0 for no roomates, and the max is 4. '))
+  print("-------------------------------")
+  print("Calculating your options now.")
+  if priceRange == 0:
+    pricePref = 342
+  elif priceRange == 1:
+    pricePref = 625
+  elif priceRange == 2:
+    pricePref = 701
+  elif priceRange == 3:
+    pricePref = 1324
+  userChoice = {'price': pricePref, "campus": campusChoice.lower(), 'roomMates': roomates}
+  matched = {}
+  offLength = len(offcampusHousing)
+  for i in range(offLength):
+    matches = 0
+    if offcampusHousing[i]['minCost'] <= userChoice['price'] <= offcampusHousing[i]['maxCost']:
+      matches += 1
+    if offcampusHousing[i]['minRoom'] <= userChoice['roomMates'] <= offcampusHousing[i]['maxRoom']:
+      matches += 1
+    if offcampusHousing[i]['campus'] == userChoice['campus']:
+      matches += 1
+    if matches > 0:
+      matched[offcampusHousing[i]['name']] = matches
+  options = [key for key,val in matched.items() if val == max(matched.values())]
+  for option in options:
+    indexed ={}
+    num = 0
+    for i in range(offLength):
+      if offcampusHousing[i]['name'] == option:
+        num = i
+    indexed[option] = num
+    print("{} \n This housing option has roomate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roomates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], offcampusHousing[indexed[option]]["cityMiles"], offcampusHousing[indexed[option]]["eastMiles"]))
+    print("-------------------------------")
+  
+  
 print("-------------------------------")
 print("Hello, welcome to the UNL Student Housing Quiz!\n After a few short questions, you will receive recommendations on which on-/off-campus living spaces you should check out.\n   Enjoy!")
 print("-------------------------------")
