@@ -7,7 +7,7 @@ campusHousing = [
   { "name":"Harper", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":450},
   { "name":"Husker", "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":1, "cost":" $ 6,511.00 ", "mealPlan":False, "special":"", "upperClass":True, "occupants":41},
   { "name":"Kauffman", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" N/A ", "mealPlan":True, "special":"Raikes Program", "upperClass":False, "occupants":"N/A"},
-  { "name":"Love ", "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female", "upperClass":False, "occupants":45},
+  { "name":"Love ", "type":"Traditional Dorm", "breakHousing":False, "campus":"east", "minRoom":1, "maxRoom":2, "cost":" $ 3,682.00 ", "mealPlan":False, "special":"Female only", "upperClass":False, "occupants":45},
  { "name": "Neihardt", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,457.00 ", "mealPlan":True, "special":"Honors Program", "upperClass":False, "occupants":462},
   { "name":"Pound", "type":"Traditional Dorm", "breakHousing":True, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,176.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":228},
   { "name":"Sandoz", "type":"Traditional Dorm", "breakHousing":False, "campus":"city", "minRoom":1, "maxRoom":2, "cost":" $ 10,670.00 ", "mealPlan":True, "special":"", "upperClass":False, "occupants":401},
@@ -54,7 +54,6 @@ def onCampus():
   if specialOpp == 1:
     count = 0
     for i in range(onLength):
-      #print("{} = {}".format(key, val))
       if campusHousing[i]["special"] != '':
         print("{}. {}".format(count, campusHousing[i]["special"]))
         count += 1
@@ -69,14 +68,14 @@ def onCampus():
     housePref = "Apartment-Style"
   if specialOpp == 1:
     if oppChoice == 0:
-      oppChoice = "Female"
+      oppChoice = "Female Only"
     elif oppChoice == 1:
       oppChoice = "Raikes Program"
     elif oppChoice == 2:
       oppChoice = "Honors Program"
   else:
     oppChoice = ''
-  userChoice = {"type": bool(housePref), "breakHousing": bool(breakHousing), "campus": campusChoice.lower(), "mealPlan": bool(mealPlan), "special": oppChoice, "upperClass": bool(upperClassman)}
+  userChoice = {"type": housePref, "breakHousing": bool(breakHousing), "campus": campusChoice.lower(), "mealPlan": bool(mealPlan), "special": oppChoice, "upperClass": bool(upperClassman)}
   matched = {}
   for i in range(onLength):
     matches = 0
@@ -96,15 +95,16 @@ def onCampus():
   options = [key for key,val in matched.items() if val == max(matched.values())]
   print("Here are your options: ")
   for option in options:
-    indexed ={}
+    indexed = {}
     num = 0
     for i in range(onLength):
       if campusHousing[i]['name'] == option:
         num = i
     indexed[option] = num
-    print("{name} \n This {typed} housing option {breakOption} break housing is on {campus} campus with a minimum number of {minR} roomate(s) and a maximum of {maxR} roommates. The standard occpancy cost is {cost}, and this housing option {mealPlan} with {specialOption}. This residence {upper} upperclassmen and has {num} occupants.".format(name = option, typed = campusHousing[indexed[option]]["type"], breakOption="with" if campusHousing[indexed[option]]["breakHousing"] == True else "without", campus = campusHousing[indexed[option]]["campus"],minR = campusHousing[indexed[option]]["minRoom"], maxR = campusHousing[indexed[option]]["maxRoom"], cost = campusHousing[indexed[option]]["cost"].strip(), mealPlan = "offers a meal plan" if campusHousing[indexed[option]]["mealPlan"] == True else "offers no meal plan", specialOption = "no special housing options" if campusHousing[indexed[option]]["special"] == "" else campusHousing[indexed[option]]["special"], upper = "is geared toward" if campusHousing[indexed[option]]["upperClass"] == True else "isn't geared toward", num = campusHousing[indexed[option]]["occupants"]))
+    print("{name} \n This {typed} housing option {breakOption} break housing is on {campus} campus with a minimum number of {minR} roommate(s) and a maximum of {maxR} roommates. The standard occpancy cost is {cost}, and this housing option {mealPlan} with {specialOption}. This residence {upper} upperclassmen and has {num} occupants.".format(name = option, typed = campusHousing[indexed[option]]["type"], breakOption="with" if campusHousing[indexed[option]]["breakHousing"] == True else "without", campus = campusHousing[indexed[option]]["campus"],minR = campusHousing[indexed[option]]["minRoom"], maxR = campusHousing[indexed[option]]["maxRoom"], cost = campusHousing[indexed[option]]["cost"].strip(), mealPlan = "offers a meal plan" if campusHousing[indexed[option]]["mealPlan"] == True else "offers no meal plan", specialOption = "no special housing options" if campusHousing[indexed[option]]["special"] == "" else campusHousing[indexed[option]]["special"], upper = "is geared toward" if campusHousing[indexed[option]]["upperClass"] == True else "isn't geared toward", num = campusHousing[indexed[option]]["occupants"]))
     print("-------------------------------")  
         
+      
       
 def offCampus():
   '''leads user through off campus questions'''
@@ -114,7 +114,7 @@ def offCampus():
     print("{}. {} per month per bed".format(i, prices[i]))
   priceRange = eval(input("Select your price level by typing in that level's number. "))
   campusChoice = input('Which campus would you rather be closer to? East or City? ')
-  roomates = eval(input('How many roomates? Type 0 for no roomates, and the max is 4. '))
+  roomates = eval(input('How many roommates? Type 0 for no roommates, and the max is 4. '))
   print("-------------------------------")
   print("Calculating your options now.")
   if priceRange == 0:
@@ -147,16 +147,17 @@ def offCampus():
       if offcampusHousing[i]['name'] == option:
         num = i
     indexed[option] = num
-    print("{} \n This housing option has roomate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roomates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], offcampusHousing[indexed[option]]["cityMiles"], offcampusHousing[indexed[option]]["eastMiles"]))
+    print("{} \n This housing option has roommate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roommates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], decimal(offcampusHousing[indexed[option]]["cityMiles"]), decimal(offcampusHousing[indexed[option]]["eastMiles"])))
     print("-------------------------------")
   
   
+  
 print("-------------------------------")
-print("Hello, welcome to the UNL Student Housing Quiz!\n After a few short questions, you will receive recommendations on which on-/off-campus living spaces you should check out.\n   Enjoy!")
+print("Hello, welcome to the UNL Student Housing Quiz!\n After a few short questions, you will receive recommendations on which on or off campus living spaces you should check out.\n   Enjoy!")
 print("-------------------------------")
-campusPref = input("Do you want to live on or off campus? If on-campus, type on and vice versa. ")
+campusPref = input("Do you want to live on or off campus? If on campus, type on and vice versa. ")
 if campusPref.lower() == 'on':
-  print("Although housing on campus has its perks, it's hard to decide which housing is right for you.\n From housing style to tendency for higher MPIs per bed, no feature is too small to check.")
+  print("Although housing on campus has its perks, it's hard to decide which housing is right for you.\n From housing style to roommate struggles, no feature is too small to check.")
   onCampus()
 elif campusPref.lower() == 'off':
   offCampus()
