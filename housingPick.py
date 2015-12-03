@@ -147,7 +147,7 @@ def offCampus():
       if offcampusHousing[i]['name'] == option:
         num = i
     indexed[option] = num
-    print("{} \n This housing option has roommate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roommates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], decimal(offcampusHousing[indexed[option]]["cityMiles"]), decimal(offcampusHousing[indexed[option]]["eastMiles"])))
+    print("{} \n This housing option has roommate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roommates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], offcampusHousing[indexed[option]]["cityMiles"], offcampusHousing[indexed[option]]["eastMiles"]))
     print("-------------------------------")
   
   
