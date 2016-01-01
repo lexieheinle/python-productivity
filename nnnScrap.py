@@ -16,20 +16,22 @@ def findArticles(website, firstName, lastName):
             for link in links:
                 articleLink.append(link.get('href')) #push article links to array
     for article in articleLink:
-        text = urllib.request.urlopen(article).read()
-        html = text.content
-        soup = BeautifulSoup(html,from_encoding="utf-8")
-        articleTitle = soup.find('h1')
+        html = urllib.request.urlopen(article).read()
+        soup = BeautifulSoup(html)
+        articleTitle = soup.find('h1').prettify(formatter='html')
         print (articleTitle)
-        articleAuthor = soup.find('p', class_="post-byline")
+        articleAuthor = soup.find('p', class_="post-byline").prettify(formatter='html')
         print (articleAuthor)
-        articleContent = soup.find('div', class_="entry-inner")
-        print (articleContent)
+        articleContent = soup.find('div', class_="entry-inner").prettify(formatter='html')
+        print (str(articleContent))
+        for content in str(articleContent):
+          content = content.replace('’', '\'').replace('“', '"').replace('”', '"')
+        print(str(articleContent))
         splitArticle = str(article).split('/')
         shortTitle = splitArticle[-2]
         print (shortTitle) #same as headline
         f = open('{}.html'.format(shortTitle), 'w') #create html file
-        message = str(articleTitle) + str(articleAuthor) + str(articleContent) + str('<a href={} target="_blank">View the orginial website</a>'.format(article))
+        message = str(articleTitle) + str(articleAuthor) + str(articleContent) + str('<a href={} target="_blank">View the article on the original website</a>'.format(article))
         f.write(message)
         f.close()
         pdfkit.from_file('{}.html'.format(shortTitle),'{}.pdf'.format(shortTitle)) #create pdf version
