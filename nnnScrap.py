@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pdfkit
 import urllib.request
 
-def findArticles(website, firstName, lastName):
+def find-articles(website, firstName, lastName):
     url = "{0}?s={1}+{2}".format(website, firstName, lastName) #access the search term through website
     html = urllib.request.urlopen(url).read()
     soup = BeautifulSoup(html,from_encoding="utf-8")
@@ -36,4 +36,4 @@ def findArticles(website, firstName, lastName):
         f.close()
         pdfkit.from_file('{0}.html'.format(shortTitle),'{0}.pdf'.format(shortTitle)) #create pdf version
 
-articles = findArticles("http://www.newsnetnebraska.org/", "lexie", "heinle")
+articles = find-articles("http://www.newsnetnebraska.org/", "lexie", "heinle")

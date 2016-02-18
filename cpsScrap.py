@@ -9,38 +9,38 @@ page = urllib.request.urlopen(url).read()
 soup = BeautifulSoup(page)
 tables = soup.findAll('table') #find all tables
 #print(tables)
-mainTable = soup.find(id="cps_eeann_year")
-#print(mainTable)
+main-table = soup.find(id="cps_eeann_year")
+#print(main-table)
 for table in tables:
   caption = table.find('caption')
   print(caption)
 data = [] #create holder for results
-rows = mainTable.findAll('tr')
+rows = main-table.findAll('tr')
 #print(rows)
 for row in rows[1:]:
-  dataRow = [] #create smaller list for each row
+  data-row = [] #create smaller list for each row
   for th in row.findAll('th'):
-    dataRow.append(th.text)
+    data-row.append(th.text)
   for td in row.findAll('td'):
-    dataRow.append(td.text) 
-  data.append(dataRow)
+    data-row.append(td.text)
+  data.append(data-row)
 data.pop()
 print(data)
-cleanedRate = []
-cleanedDate = []
+cleaned-rate = []
+cleaned-date = []
 for da in data:
   #da[0] = eval(da[0])
   try:
     if int(da[0]) >= 1947:
       dates = "{0}-{1}-{2}".format(da[0], 1, 1)
-      cleanedDate.append(dates)
-      cleanedRate.append(eval(da[-2]))
+      cleaned-date.append(dates)
+      cleaned-rate.append(float(da[-2]))
   except ValueError:
     pass
 #cleaned.pop(0)
-print(cleanedRate)
-print(cleanedDate)
-length = len(cleanedRate)
+print(cleaned-rate)
+print(cleaned-date)
+length = len(cleaned-rate)
 for i in range(length):
-  b, bcreated = Unemployment.objects.get_or_create(rate=cleanedRate[i], date=cleanedDate[i])
+  b, bcreated = Unemployment.objects.get_or_create(rate=cleaned-rate[i], date=cleaned-date[i])
   print(b)

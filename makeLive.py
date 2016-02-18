@@ -3,11 +3,11 @@ import subprocess
 import shutil
 import os
 
-fileSite = input("Enter the file path (start from year): ")
+file-site = input("Enter the file path (start from year): ")
 projectNumber = input("Enter the project number: ")
 newProject = input("Is this a new project? (Type Y for yes): ")
 finderWindow = input("Want to open a new Finder window? (Type y for yes): ")
-def linkIt(filePath):
+def link-it(filePath):
     filePath = filePath.replace("\\", "/") #take care of windows weirdness
     print(filePath[0:8])
     #/Volumes/marketing$/Creative Services/2016/NBS/FACTS_K12_Sales_Mktg/6806_RenWeb_Upsell_To_FGAA_4/Design/Production/6806_RenWeb_Upsell_to_FGAA_4_0218.html
@@ -29,7 +29,7 @@ def linkIt(filePath):
     fileInner = filePath[9:fileInnerStart - 1] #get inner division from file path
     fileTitleStart = filePath.rfind(projectNumber)
     fileTitle = filePath[fileTitleStart:] #get file name
-    def newOne():
+    def new-one():
         newDir = emailServerPath + emailServerCommon + "/" + fileInner + "/" + projectNumber
         if not os.path.exists(newDir):
             os.makedirs(newDir)
@@ -38,19 +38,18 @@ def linkIt(filePath):
             subprocess.call(["open", "-R", newDir])
         print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, projectNumber, fileTitle))
     if newProject.lower() == "y":
-        newOne()
+        new-one()
     else:
         for folder in innerFolders:
             if folder == fileInner:
                 for smallFolder in os.listdir(emailServerPath + emailServerCommon + "/" + fileInner):
-                    if os.path.isdir(emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder) == True:
-                        if smallFolder == projectNumber:
-                            if finderWindow.lower() == 'y':
-                                shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
-                                subprocess.call(["open", "-R", emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/"])
-                            else:
-                                shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
-                            print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
+                    if os.path.isdir(emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder) == True and smallFolder == projectNumber:
+                        if finderWindow.lower() == 'y':
+                            shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
+                            subprocess.call(["open", "-R", emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/"])
+                        else:
+                            shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
+                        print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
 #things to add: fix wonky folders, make project number not input based.
 
-linkIt(fileSite)
+link-it(file-site)
