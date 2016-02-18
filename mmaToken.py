@@ -36,4 +36,4 @@ for fil in files:
     for newLine in newLines:
         newContent.write(newLine)
     newContent.close()
-    print('Replaced tokens in {}'.format(newFilPath))
+    print('Replaced tokens in {0}'.format(newFilPath))

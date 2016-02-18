@@ -4,7 +4,7 @@ import pdfkit
 import urllib.request
 
 def findArticles(website, firstName, lastName):
-    url = "{}?s={}+{}".format(website, firstName, lastName) #access the search term through website
+    url = "{0}?s={1}+{2}".format(website, firstName, lastName) #access the search term through website
     html = urllib.request.urlopen(url).read()
     soup = BeautifulSoup(html,from_encoding="utf-8")
     articles = soup.findAll('article') #find all articles
@@ -30,10 +30,10 @@ def findArticles(website, firstName, lastName):
         splitArticle = str(article).split('/')
         shortTitle = splitArticle[-2]
         print (shortTitle) #same as headline
-        f = open('{}.html'.format(shortTitle), 'w') #create html file
-        message = str(articleTitle) + str(articleAuthor) + str(articleContent) + str('<a href={} target="_blank">View the article on the original website</a>'.format(article))
+        f = open('{0}.html'.format(shortTitle), 'w') #create html file
+        message = str(articleTitle) + str(articleAuthor) + str(articleContent) + str('<a href={0} target="_blank">View the article on the original website</a>'.format(article))
         f.write(message)
         f.close()
-        pdfkit.from_file('{}.html'.format(shortTitle),'{}.pdf'.format(shortTitle)) #create pdf version
+        pdfkit.from_file('{0}.html'.format(shortTitle),'{0}.pdf'.format(shortTitle)) #create pdf version
 
 articles = findArticles("http://www.newsnetnebraska.org/", "lexie", "heinle")
