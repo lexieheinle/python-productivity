@@ -3,16 +3,24 @@ import subprocess
 import shutil
 import os
 
-fileSite = input("Enter the file path (start from year): ") 
+fileSite = input("Enter the file path (start from year): ")
 projectNumber = input("Enter the project number: ")
 newProject = input("Is this a new project? (Type Y for yes): ")
 finderWindow = input("Want to open a new Finder window? (Type y for yes): ")
 def linkIt(filePath):
     filePath = filePath.replace("\\", "/") #take care of windows weirdness
-    serverPath = "/Volumes/marketing$/Creative Services/" 
-    fullFile = serverPath + filePath #add weird server path
+    print(filePath[0:8])
+    #/Volumes/marketing$/Creative Services/2016/NBS/FACTS_K12_Sales_Mktg/6806_RenWeb_Upsell_To_FGAA_4/Design/Production/6806_RenWeb_Upsell_to_FGAA_4_0218.html
+    if filePath[0:8] == '/Volumes':
+        fullFile = filePath
+        yearStart = filePath.find('2')
+        emailServerCommon = filePath[yearStart:8] #year and main division i.e. NDS
+    else: #emteet.io
+        serverPath = "/Volumes/marketing$/Creative Services/"
+        fullFile = serverPath + filePath #add weird server path
+        emailServerCommon = filePath[:8] #year and main division i.e. NDS
     emailServerPath = "/Volumes/Communications/email/"
-    emailServerCommon = filePath[:8] #year and main division i.e. NDS
+
     innerFolders = [] #list of inner divisions like i.e. MBLE_EP
     for folder in os.listdir(emailServerPath + emailServerCommon):
         if os.path.isdir(emailServerPath + emailServerCommon + "/" + folder) == True:
@@ -39,10 +47,10 @@ def linkIt(filePath):
                         if smallFolder == projectNumber:
                             if finderWindow.lower() == 'y':
                                 shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
-                                subprocess.call(["open", "-R", emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/"]) 
+                                subprocess.call(["open", "-R", emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/"])
                             else:
                                 shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
                             print("http://www.nelnet.net/marketingprod/email/{}/{}/{}/{}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
-#things to add: fix wonky folders, make project number not input based.          
+#things to add: fix wonky folders, make project number not input based.
 
 linkIt(fileSite)
