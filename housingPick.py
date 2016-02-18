@@ -55,7 +55,7 @@ def onCampus():
     count = 0
     for i in range(onLength):
       if campusHousing[i]["special"] != '':
-        print("{}. {}".format(count, campusHousing[i]["special"]))
+        print("{0}. {1}".format(count, campusHousing[i]["special"]))
         count += 1
     oppChoice = eval(input("If interested, select one of the options above by typing its number. If not enter a larger number. "))
   print("-------------------------------")
@@ -111,7 +111,7 @@ def offCampus():
   print("Hooray for the freedom and also the chance to save some money. These ranges are based on percentiles in our selection of apartments.")
   prices = ["$254 to $342", "$343 to $625", "$626 to $701", "$702 to $1324"]
   for i in range(len(prices)):
-    print("{}. {} per month per bed".format(i, prices[i]))
+    print("{0}. {1} per month per bed".format(i, prices[i]))
   priceRange = eval(input("Select your price level by typing in that level's number. "))
   campusChoice = input('Which campus would you rather be closer to? East or City? ')
   roomates = eval(input('How many roommates? Type 0 for no roommates, and the max is 4. '))
@@ -147,7 +147,7 @@ def offCampus():
       if offcampusHousing[i]['name'] == option:
         num = i
     indexed[option] = num
-    print("{} \n This housing option has roommate options from {} to {} (0 denotes a studio apartment). Although costs vary given the number of roommates, this option has a minimum rent of ${} per bed per month and maximum of ${} per bed per month. This apartment is located closer to {} campus and is only {} miles from city campus and {} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], offcampusHousing[indexed[option]]["cityMiles"], offcampusHousing[indexed[option]]["eastMiles"]))
+    print("{0} \n This housing option has roommate options from {1} to {2} (0 denotes a studio apartment). Although costs vary given the number of roommates, this option has a minimum rent of ${3} per bed per month and maximum of ${4} per bed per month. This apartment is located closer to {5} campus and is only {6} miles from city campus and {7} miles from east campus.".format(option, offcampusHousing[indexed[option]]["minRoom"],offcampusHousing[indexed[option]]["maxRoom"], offcampusHousing[indexed[option]]["minCost"], offcampusHousing[indexed[option]]["maxCost"], offcampusHousing[indexed[option]]["campus"], offcampusHousing[indexed[option]]["cityMiles"], offcampusHousing[indexed[option]]["eastMiles"]))
     print("-------------------------------")
   
   

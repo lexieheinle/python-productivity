@@ -22,4 +22,4 @@ for row in rows[1:]:
         dataRow.append(link['href'])
   data.append(dataRow)
 for da in data:
-  print("On {}, {} was issued an exception. Here's the link.\n {}".format (da[0], da[1], da[-1])) #print it.
+  print("On {0}, {1} was issued an exception. Here's the link.\n {2}".format (da[0], da[1], da[-1])) #print it.

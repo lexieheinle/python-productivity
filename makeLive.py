@@ -36,7 +36,7 @@ def linkIt(filePath):
         shutil.copy(fullFile, newDir + "/")
         if finderWindow.lower() == 'y':
             subprocess.call(["open", "-R", newDir])
-        print("http://www.nelnet.net/marketingprod/email/{}/{}/{}/{}".format(emailServerCommon, fileInner, projectNumber, fileTitle))
+        print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, projectNumber, fileTitle))
     if newProject.lower() == "y":
         newOne()
     else:
@@ -50,7 +50,7 @@ def linkIt(filePath):
                                 subprocess.call(["open", "-R", emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/"])
                             else:
                                 shutil.copy(fullFile, emailServerPath + emailServerCommon + "/" + fileInner + "/" + smallFolder + "/")
-                            print("http://www.nelnet.net/marketingprod/email/{}/{}/{}/{}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
+                            print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
 #things to add: fix wonky folders, make project number not input based.
 
 linkIt(fileSite)
