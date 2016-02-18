@@ -8,6 +8,7 @@ projectNumber = input("Enter the project number: ")
 newProject = input("Is this a new project? (Type Y for yes): ")
 finderWindow = input("Want to open a new Finder window? (Type y for yes): ")
 def link-it(filePath):
+    'copy local file to email server'
     filePath = filePath.replace("\\", "/") #take care of windows weirdness
     print(filePath[0:8])
     #/Volumes/marketing$/Creative Services/2016/NBS/FACTS_K12_Sales_Mktg/6806_RenWeb_Upsell_To_FGAA_4/Design/Production/6806_RenWeb_Upsell_to_FGAA_4_0218.html
@@ -30,6 +31,7 @@ def link-it(filePath):
     fileTitleStart = filePath.rfind(projectNumber)
     fileTitle = filePath[fileTitleStart:] #get file name
     def new-one():
+        'create new job folder on email server'
         newDir = emailServerPath + emailServerCommon + "/" + fileInner + "/" + projectNumber
         if not os.path.exists(newDir):
             os.makedirs(newDir)
