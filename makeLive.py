@@ -3,23 +3,18 @@ import subprocess
 import shutil
 import os
 
-file-site = input("Enter the file path (start from year): ")
+filedSite = input("Enter the file path (start from year): ")
 projectNumber = input("Enter the project number: ")
 newProject = input("Is this a new project? (Type Y for yes): ")
 finderWindow = input("Want to open a new Finder window? (Type y for yes): ")
-def link-it(filePath):
+def linkedIt(filePath):
     'copy local file to email server'
     filePath = filePath.replace("\\", "/") #take care of windows weirdness
     print(filePath[0:8])
     #/Volumes/marketing$/Creative Services/2016/NBS/FACTS_K12_Sales_Mktg/6806_RenWeb_Upsell_To_FGAA_4/Design/Production/6806_RenWeb_Upsell_to_FGAA_4_0218.html
-    if filePath[0:8] == '/Volumes':
-        fullFile = filePath
-        yearStart = filePath.find('2')
-        emailServerCommon = filePath[yearStart:8] #year and main division i.e. NDS
-    else: #emteet.io
-        serverPath = "/Volumes/marketing$/Creative Services/"
-        fullFile = serverPath + filePath #add weird server path
-        emailServerCommon = filePath[:8] #year and main division i.e. NDS
+    serverPath = "/Volumes/marketing$/Creative Services/"
+    fullFile = serverPath + filePath #add weird server path
+    emailServerCommon = filePath[:8] #year and main division i.e. NDS
     emailServerPath = "/Volumes/Communications/email/"
 
     innerFolders = [] #list of inner divisions like i.e. MBLE_EP
@@ -30,7 +25,7 @@ def link-it(filePath):
     fileInner = filePath[9:fileInnerStart - 1] #get inner division from file path
     fileTitleStart = filePath.rfind(projectNumber)
     fileTitle = filePath[fileTitleStart:] #get file name
-    def new-one():
+    def newOne():
         'create new job folder on email server'
         newDir = emailServerPath + emailServerCommon + "/" + fileInner + "/" + projectNumber
         if not os.path.exists(newDir):
@@ -39,8 +34,9 @@ def link-it(filePath):
         if finderWindow.lower() == 'y':
             subprocess.call(["open", "-R", newDir])
         print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, projectNumber, fileTitle))
+
     if newProject.lower() == "y":
-        new-one()
+        newOne()
     else:
         for folder in innerFolders:
             if folder == fileInner:
@@ -54,4 +50,4 @@ def link-it(filePath):
                         print("http://www.nelnet.net/marketingprod/email/{0}/{1}/{2}/{3}".format(emailServerCommon, fileInner, smallFolder, fileTitle))
 #things to add: fix wonky folders, make project number not input based.
 
-link-it(file-site)
+linkedIt(filedSite)
