@@ -5,33 +5,33 @@ import time
 import os
 import re
 
-current-user = os.getcwd()
-user-start = current-user.find("Users")
-user-end = current-user.find("/", user-start + 6)
-user = current-user[user-start + 6:user-end]
+current_user = os.getcwd()
+user_start = current_user.find("Users")
+user_end = current_user.find("/", user_start + 6)
+user = current_user[user_start + 6:user_end]
 users = {"lheinle": '/Users/lheinle/Documents/github/', "clipskey": '/Users/clipskey/Dev/', }
-mma-path = users[user] + 'MMAv3/'
-print(os.path.isdir(mma-path))
+mma_path = users[user] + 'MMAv3/'
+print(os.path.isdir(mma_path))
 files = []
-token-find = r'{{.*}}'
-if os.path.isdir(mma-path) == True:
-    print(mma-path)
-    for file in os.listdir(mma-path):
+token_find = r'{{.*}}'
+if os.path.isdir(mma_path) == True:
+    print(mma_path)
+    for file in os.listdir(mma_path):
         print(file[:24])
         if file[:24] == 'messages-loan-statement-' and file.endswith(".html") and file[-10:] != '-demo.html':
             files.append(file)
 print("Here are the files that will be searched for token regex.")
 print(files)
 for fil in files:
-    old-fil-path = mma-path + fil
-    with open(old-fil-path, "r") as content:
+    old_file_path = mma_path + fil
+    with open(old_file_path, "r") as content:
         lines = content.readlines()
-        new-lines = []
+        new_lines = []
         for line in lines:
-            new-line = re.sub(token-find,'XXXXXX', line)
-            new-lines.append(new-line)
-    new-fil-path = mma-path + fil[:-5] + '-demo.html'
-    with open(new-fil-path, 'w') as new-content:
-        for new-line in new-lines:
-            new-content.write(new-line)
-    print('Replaced tokens in {0}'.format(new-fil-path))
+            new_line = re.sub(token_find,'XXXXXX', line)
+            new_lines.append(new_line)
+    new_fil_path = mma_path + fil[:-5] + '-demo.html'
+    with open(new_fil_path, 'w') as new_content:
+        for new_line in new_lines:
+            new_content.write(new_line)
+    print('Replaced tokens in {0}'.format(new_fil_path))
