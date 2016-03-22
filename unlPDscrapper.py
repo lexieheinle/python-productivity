@@ -18,8 +18,15 @@ crime_links = []
 items = reports.find_all('li')
 for item in items:
     crime_id = item.find(id=re.compile('.*IncidentNumberLink'))
-    crime_id_url = crime_base_url + crime_id['href']
-    crime_links.append(crime_id_url)
+    print(type(crime_id))
+    try:
+        print(crime_id.attrs['href'])
+        crime_id_unique = crime_id.attrs['href']
+        crime_id_url = crime_base_url + crime_id_unique
+        crime_links.append(crime_id_url)
+    except:
+        print("Offical report hasn't been filed for {}".format(crime_id))
+
 print(crime_links)
 if len(crime_links) > 0:
     with open('crimes.csv', 'w', newline='') as csvfile:
