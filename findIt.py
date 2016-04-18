@@ -8,7 +8,7 @@ currentUser = os.getcwd()
 userStart = currentUser.find("Users")
 userEnd = currentUser.find("/", userStart + 6)
 user = currentUser[userStart + 6:userEnd]
-users = {"lheinle": ["Lexie", "Atom", r'/Applications/Atom.app/Contents/MacOS/Atom'], "seckles": ["Steph", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "dlipskey": ["Claire", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "mlambie": ["Mitch", "Sublime Text", r'/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2'] }
+users = {"lheinle": ["Lexie", "Atom", r'/Applications/Atom.app/Contents/MacOS/Atom'], "seckles": ["Steph", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "clipskey": ["Claire", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "mlambie": ["Mitch", "Sublime Text", r'/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2'] }
 print("Hi, {} \n Let's start/edit an email project!".format(users[user][0]))
 fileSite = input("Enter the file path (start from year and go to the production /) If you don't have it, type N: ")
 projectNumber = input("Enter the project number: ")
