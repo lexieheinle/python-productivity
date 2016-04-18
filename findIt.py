@@ -128,5 +128,5 @@ def brackIt(filePath):
             if finderWindow.lower() == 'y' and filePath.lower() != 'n':
                 subprocess.call(["open", "-R", serverPath + filePath])
         print("\nThank you for using Lexie's findIt program. \n Any suggestions give Lexie a hollar!")
-#things to add....Add commonly used templates, automatically get project number from path,
+#things to add.... automatically get project number from path,
 brackIt(fileSite)
