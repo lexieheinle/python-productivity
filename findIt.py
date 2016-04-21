@@ -8,7 +8,7 @@ currentUser = os.getcwd()
 userStart = currentUser.find("Users")
 userEnd = currentUser.find("/", userStart + 6)
 user = currentUser[userStart + 6:userEnd]
-users = {"lheinle": ["Lexie", "Atom", r'/Applications/Atom.app/Contents/MacOS/Atom'], "seckles": ["Steph", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "clipskey": ["Claire", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "mlambie": ["Mitch", "Sublime Text", r'/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2'] }
+users = {"lheinle": ["Lexie", "Atom", r'/Applications/Atom.app/Contents/MacOS/Atom'], "seckles": ["Steph", "DreamWeaver", r'/Applications/Adobe Dreamweaver CC 2015/Adobe Dreamweaver CC 2015.app/Contents/MacOS/Dreamweaver'], "clipskey": ["Claire", "DreamWeaver", r'/Applications/Atom.app/Contents/MacOS/Atom'], "mlambie": ["Mitch", "Sublime Text", r'/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2'] }
 print("Hi, {} \n Let's start/edit an email project!".format(users[user][0]))
 fileSite = input("Enter the file path (start from year and go to the production /) If you don't have it, type N: ")
 projectNumber = input("Enter the project number: ")
@@ -38,6 +38,16 @@ def brackIt(filePath):
         subDivision = input("Enter the sub division. (i.e. MBLE_EP): ")#need to search for correct project folder
         if os.path.isdir(serverPath + serverYear + mainDivision + "/" + subDivision) == True:
             print("Found the folder.")
+            #/Volumes/marketing$/Creative Services/2016/NBS/RenWeb
+            folderDirect = serverPath + serverYear + mainDivision + '/' + subDivision
+
+            for folder in os.listdir(folderDirect):
+                if folder[0:4] == projectNumber:
+                    #/Volumes/marketing$/Creative Services/2016/NBS/RenWeb/6898_RenWeb_Power_Conference_Email_1/Design/Production/
+                    filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/"
+                    print(filePath)
+                    if finderWindow.lower() == 'y':
+                        subprocess.call(["open", "-R", serverPath + filePath])
         else:
             subFolders = [] #list of inner divisions like i.e. MBLE_EP
             for folder in os.listdir(serverPath + serverYear + mainDivision):
@@ -61,7 +71,8 @@ def brackIt(filePath):
                     print(folderDirect)
                     for folder in os.listdir(folderDirect):
                         if folder[0:4] == projectNumber:
-                            filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/" #file path doesn't work outside loop
+                            #/Volumes/marketing$/Creative Services/2016/NBS/RenWeb/6898_RenWeb_Power_Conference_Email_1/Design/Production/
+                            filePath = serverYear +  mainDivision + "/" + subDivision + "/" + folder + "/Design/Production/"
                             print(filePath)
                             if finderWindow.lower() == 'y':
                                 subprocess.call(["open", "-R", serverPath + filePath])
@@ -86,7 +97,7 @@ def brackIt(filePath):
         print("This is the new file you created:\n\n" + filePath + fileName + "_{}{}.html".format(time.strftime("%m"), time.strftime("%d")) ) #this is used for makeLive
         shutil.copy(templateFilePath, newFilePath) #copy the template
         subprocess.check_call(["open", "-a", programPath, newFilePath])
-        subprocess.check_call(["open", "-a", newFilePath]) #open html part
+        subprocess.check_call(["open", newFilePath]) #open html part
         if finderWindow.lower() == 'y' and filePath.lower() != 'n':
             subprocess.call(["open", "-R", serverPath + filePath])
 
@@ -123,8 +134,8 @@ def brackIt(filePath):
                 shutil.copy(oldFilePath, newFilePath)
             oldProd = filePath.replace("Production", "_oldProduction") #find old production folder path
             shutil.move(oldFilePath, serverPath + oldProd + htmlFiles[numConvert]) #move old file to production
-            subprocess.check_call(["open", "-a", programPath, newFilePath])
-            subprocess.check_call(["open", newFilePath]) #open html file
+            subprocess.check_call(["open", "-a", programPath, newFilePath]) #open html in text editor
+            subprocess.check_call(["open", newFilePath]) #open html file in browser
             if finderWindow.lower() == 'y' and filePath.lower() != 'n':
                 subprocess.call(["open", "-R", serverPath + filePath])
         print("\nThank you for using Lexie's findIt program. \n Any suggestions give Lexie a hollar!")
